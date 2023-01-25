@@ -1,6 +1,6 @@
 "use strict";
 
-const { src, dest } = require("gulp"); //считывание записывание // входные и выходные файлы
+const { src, dest } = require("gulp");
 const gulp = require("gulp");
 const autoPrefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
@@ -167,4 +167,4 @@ exports.fonts = fonts;
 exports.clean = clean;
 exports.build = build;
 exports.watch = watch;
-exports.default = watch; //gulp вместо gulp watch
+exports.default = watch;
