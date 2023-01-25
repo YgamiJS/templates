@@ -8,7 +8,6 @@ const rigger = require("gulp-rigger");
 const sass = require("gulp-sass")(require("sass"));
 const del = require("del");
 const imagemin = require("gulp-imagemin");
-const panini = require("panini");
 const gulpPlumber = require("gulp-plumber");
 const GulpUglify = require("gulp-uglify");
 const beautlify = require("gulp-beautify");
@@ -138,9 +137,7 @@ const fonts = () =>
 
 const clean = () => del(path.clean);
 
-const build = gulp
-  .series(clean, gulp.parallel(html, css, js, fonts, images))
-  .pipe(browserSync.reload({ stream: true }));
+const build = gulp.series(clean, gulp.parallel(html, css, js, fonts, images));
 
 const watchFiles = () => {
   gulp.watch([path.watch.html], html);
