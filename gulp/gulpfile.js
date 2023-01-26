@@ -11,6 +11,7 @@ const imagemin = require("gulp-imagemin");
 const gulpPlumber = require("gulp-plumber");
 const GulpUglify = require("gulp-uglify");
 const beautlify = require("gulp-beautify");
+const babel = require("gulp-babel");
 const removeCommnets = require("gulp-strip-css-comments");
 const gulpStripCssComments = require("gulp-strip-css-comments");
 const browserSync = require("browser-sync").create();
@@ -102,6 +103,11 @@ const css = () =>
 
 const js = () =>
   src(path.src.js, { base: srcPath + "assets/js/" })
+    .pipe(
+          babel({
+            presets: ["@babel/env"],
+          })
+     )
     .pipe(
       gulpPlumber({
         errorHandler: (error) => {
