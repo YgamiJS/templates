@@ -141,6 +141,13 @@ const fonts = () =>
     browserSync.reload({ stream: true })
   );
 
+const server = () =>
+  browserSync.init({
+    server: {
+      baseDir: "./" + distPath,
+    },
+  });
+
 const clean = () => del(path.clean);
 
 const build = gulp.series(clean, gulp.parallel(html, css, js, fonts, images));
@@ -154,13 +161,6 @@ const watchFiles = () => {
 };
 
 const watch = gulp.parallel(build, watchFiles, server);
-
-const server = () =>
-  browserSync.init({
-    server: {
-      baseDir: "./" + distPath,
-    },
-  });
 
 exports.html = html;
 exports.css = css;
